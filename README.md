@@ -4,7 +4,11 @@
 
 ## Descripción del Proyecto
 
-Este proyecto realiza un análisis exhaustivo del problema de evasión de clientes (Churn) en la empresa Telecom X. Mediante técnicas de análisis exploratorio de datos (EDA), se identifican los factores clave que influyen en la cancelación de servicios, proporcionando insights estratégicos para mejorar la retención de clientes.
+Este proyecto realiza un análisis exhaustivo del problema de evasión de clientes (Churn) en Telecom X en dos fases:
+
+**Parte 1 (Análisis Exploratorio):** Desanidalización de datos JSON, limpieza, transformación y análisis descriptivo detallado de variables categóricas y numéricas.
+
+**Parte 2 (Modelado Predictivo):** Construcción de modelos de Machine Learning para predecir cancelaciones, análisis de correlación, evaluación de rendimiento e identificación de factores clave que influyen en la evasión de clientes.
 
 ## Contexto y Problemática
 
@@ -19,6 +23,7 @@ Telecom X enfrenta una **tasa de evasión del 26.58%**, lo que significa que apr
 ```
 challenge2-data-science-LATAM/
 ├── README.md                               # Este archivo (documentación del proyecto)
+├── INSTRUCCIONES_PARTE2.md                # Instrucciones detalladas de Parte 2
 ├── requirements.txt                        # Dependencias Python
 ├── data/
 │   ├── TelecomX_Data.json                 # Dataset original con estructura JSON
@@ -26,7 +31,8 @@ challenge2-data-science-LATAM/
 │   └── processed/
 │       └── telecom_cleaned.csv            # Datos limpios exportados de Parte 1 (7,032 registros)
 └── notebooks/
-    └── TelecomX_LATAM.ipynb               # Notebook EDA completo
+    ├── 01_TelecomX_LATAM_EDA.ipynb        # Análisis Exploratorio (desanidalización, limpieza)
+    └── 02_Predictive_Modeling.ipynb       # Modelado Predictivo (classification, evaluation)
 ```
 
 ## Requisitos y Dependencias
@@ -79,88 +85,109 @@ git clone https://github.com/Angel-Jair-Hernandez-Gonzalez/challenge2-data-scien
 cd challenge2-data-science-LATAM
 ```
 
-### 2. Iniciar Jupyter Notebook
+### 2. Instalar dependencias
 
 ```bash
-# Navegar a la carpeta de notebooks
-cd notebooks
-
-# Iniciar el servidor Jupyter
-jupyter notebook TelecomX_LATAM.ipynb
+pip install -r requirements.txt
 ```
 
-### 3. Ejecutar el Análisis
+### 3. Ejecutar los Notebooks en orden
 
-El notebook contiene celdas ejecutables en orden secuencial. Simplemente:
-- Ejecutar todas las celdas: `Cell → Run All`
+**Parte 1: Análisis Exploratorio**
+```bash
+cd notebooks
+jupyter notebook 01_TelecomX_LATAM_EDA.ipynb
+```
+
+**Parte 2: Modelado Predictivo**
+```bash
+jupyter notebook 02_Predictive_Modeling.ipynb
+```
+
+### 4. Ejecución de Celdas
+
+- Ejecutar todas las celdas: `Cell → Run All` (o Ctrl+Shift+Enter)
 - O ejecutar celda por celda: `Shift + Enter`
+
+**Nota:** Parte 2 depende de los datos limpios generados en Parte 1 (`data/processed/telecom_cleaned.csv`)
 
 ## Contenido del Análisis
 
-### 1. Extracción y Carga de Datos
-- Carga de datos desde archivo JSON con estructura anidada
-- Conversión a DataFrame de Pandas
-- Dataset: 7,267 registros iniciales
+### Parte 1: Análisis Exploratorio (01_TelecomX_LATAM_EDA.ipynb)
 
-### 2. Transformación y Limpieza
-- Desanidación de 6 columnas originales en 21 variables
-- Identificación y eliminación de 224 registros inválidos
-- Corrección de tipos de datos
-- Dataset limpio: 7,043 registros
+1. **Extracción y Carga de Datos**
+   - Carga desde JSON con estructura anidada
+   - Dataset inicial: 7,267 registros
 
-### 3. Análisis Descriptivo
-- Estadísticas descriptivas (media, mediana, desviación estándar)
-- Análisis de correlación entre variables
-- Distribución de variables numéricas
+2. **Transformación y Limpieza**
+   - Desanidación de 6 columnas originales → 21 variables
+   - Eliminación de 224 registros inválidos
+   - Dataset limpio: 7,032 registros
 
-### 4. Distribución de Evasión
-- Conteo y porcentaje de clientes evadidos vs activos
-- Visualizaciones: gráficos de barras y pastel
-- **Resultado: 26.58% de evasión (1,869 de 7,032 clientes)**
+3. **Análisis Descriptivo y Visualizaciones**
+   - Estadísticas descriptivas, correlación
+   - Distribución de variables numéricas
+   - Análisis de 6 variables categóricas con tasas de evasión
 
-### 5. Análisis por Variables Categóricas
-Análisis de 6 variables categóricas con las tasas de evasión más altas:
+4. **Resultados**
+   - Identificación de 5 principales factores de churn
+   - Recomendaciones estratégicas de retención
 
-| Variable | Categoría | Tasa de Evasión |
-|----------|-----------|-----------------|
-| Método de Pago | Electronic check | 45.29% |
-| Tipo de Contrato | Mes a mes | 42.71% |
-| Tipo de Internet | Fibra óptica | 41.89% |
-| Senior Citizen | Sí (≥65 años) | 41.68% |
-| Pareja | No | 32.98% |
-| Género | Mujer | 26.96% |
+### Parte 2: Modelado Predictivo (02_Predictive_Modeling.ipynb)
 
-### 6. Análisis por Variables Numéricas
-Comparación de distribuciones entre clientes evadidos y activos:
+1. **Preparación de Datos**
+   - Codificación de variables categóricas (one-hot encoding)
+   - Normalización/estandarización de features
+   - Split train/test (80/20 con stratificación)
 
-| Variable | Evadidos | Activos | Diferencia |
-|----------|----------|---------|------------|
-| Tenure (meses) | 17.98 | 37.65 | -19.67 |
-| Charges.Total ($) | 1,531.80 | 2,555.34 | -1,023.55 |
-| Charges.Monthly ($) | 74.44 | 61.31 | +13.13 |
-| Cuentas_Diarias ($) | 2.48 | 2.04 | +0.44 |
+2. **Análisis de Correlación**
+   - Matriz de correlación completa
+   - Top 10 variables correlacionadas con churn
+   - Análisis dirigido de variables clave
+
+3. **Entrenamiento de Modelos**
+   - Logistic Regression (baseline)
+   - Random Forest (interpretabilidad)
+   - XGBoost (rendimiento)
+
+4. **Evaluación Comparativa**
+   - Accuracy, Precision, Recall, F1-Score
+   - ROC-AUC curve analysis
+   - Confusion Matrix por modelo
+
+5. **Interpretación de Resultados**
+   - Feature Importance de cada modelo
+   - Factores más influyentes en cancelación
+   - Conclusiones estratégicas y recomendaciones
 
 ## Resultados Principales
 
-### Insights Clave
+### Parte 1: Insights del EDA
 
-1. **Antigüedad del Cliente**: Clientes con menos de 18 meses de contrato tienen 2.4x más probabilidad de evasión
-2. **Tipo de Contrato**: Los contratos mes a mes presentan 42.71% de evasión vs 10% para contratos de 2 años
-3. **Tipo de Internet**: Servicio de fibra óptica tiene 41.89% de evasión (posibles problemas de calidad)
-4. **Método de Pago**: Transferencia electrónica correlaciona con 45.29% de evasión
-5. **Seniores**: Clientes de 65+ años tienen 41.68% de evasión
-6. **Relaciones**: Clientes sin pareja tienen 32.98% de evasión
+1. **Antigüedad del Cliente**: Clientes con <18 meses tienen 2.4x más probabilidad de evasión
+2. **Tipo de Contrato**: Mes a mes: 42.71% evasión vs 10% para contratos de 2 años
+3. **Tipo de Internet**: Fibra óptica: 41.89% evasión (posibles problemas de calidad)
+4. **Método de Pago**: Transferencia electrónica: 45.29% evasión
+5. **Demographic Factors**: Seniores (65+) tienen 41.68% de evasión
 
-### Visualizaciones Generadas
+### Parte 2: Rendimiento Predictivo
 
-- Gráficos de distribución de evasión (barras y pastel)
-- Análisis de contingencia por 6 variables categóricas (6 gráficos)
-- Boxplots de 4 variables numéricas (4 gráficos)
-- Tablas cruzadas con porcentajes
+**Modelos Entrenados:**
+- Regresion Logística (baseline escalable)
+- Random Forest (interpretar importancia de variables)
+- XGBoost (máximo rendimiento predictivo)
+
+**Métricas de Evaluación:**
+- Accuracy, Precision, Recall, F1-Score
+- ROC-AUC para comparación de modelos
+- Análisis de confusion matrix por modelo
+
+**Variables Más Predictivas:**
+Identificadas según importancia relativa en cada modelo para soportar decisiones de negocio.
 
 ## Conclusiones y Recomendaciones
 
-### Recomendaciones Estratégicas
+### Estrategia de Retención (de Parte 1 EDA)
 
 1. **Mejorar Contratos a Corto Plazo**
    - Implementar programas de retención para nuevos clientes
@@ -176,13 +203,20 @@ Comparación de distribuciones entre clientes evadidos y activos:
    - Asignar gerentes de cuenta en primeros 6 meses
    - Seguimiento proactivo de satisfacción
 
-4. **Optimización de Métodos de Pago**
-   - Investigar problemas con transferencias electrónicas
-   - Ofrecer opciones de pago alternativas
+### Aplicación del Modelado Predictivo (Parte 2)
 
-5. **Segmentación por Perfil**
-   - Crear programas específicos para seniores
-   - Desarrollar estrategias para clientes sin pareja
+1. **Identificación Proactiva de Riesgo**
+   - Usar modelos para scoring de riesgo de churn en tiempo real
+   - Priorizar clientes de alto riesgo para intervención
+
+2. **Intervención Personalizada**
+   - Diseñar estrategias de retención basadas en factores predictivos
+   - A/B testing de tácticas de retención
+
+3. **Monitoreo Continuo**
+   - Re-entrenar modelos regularmente con datos nuevos
+   - Medir ROI de acciones de retención
+   - Optimizar thresholds según disponibilidad de recursos
 
 ## Tecnologías Utilizadas
 
