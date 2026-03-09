@@ -5,45 +5,33 @@ Has sido contratado como asistente de análisis de datos en Telecom X y formará
 
 Tu desafío será recopilar, procesar y analizar los datos, utilizando Python y sus principales bibliotecas para extraer información valiosa. A partir de tu análisis, el equipo de Data Science podrá avanzar en modelos predictivos y desarrollar estrategias para reducir la evasión.
 
-- ¿Qué vas a generar?
-✅ Importar y manipular datos desde una API de manera eficiente.
-✅ Aplicar los conceptos de ETL (Extracción, Transformación y Carga) en la preparación de los datos.
-✅ Crear visualizaciones estratégicas para identificar patrones y tendencias.
-✅ Realizar un Análisis Exploratorio de Datos (EDA) y generar un informe con insights relevantes.
 
-Para iniciar tu análisis, necesitarás importar los datos de la API de Telecom X. Estos datos están disponibles en formato JSON y contienen información esencial sobre los clientes, incluyendo datos demográficos, tipo de servicio contratado y estado de evasión.
+**Análisis Descriptivo**
+ Carga y análisis(L - Load & Analysis)
+ realiza un análisis descriptivo de los datos, calculando métricas como media, mediana, desviación estándar y otras medidas que ayuden a comprender mejor la distribución y el comportamiento de los clientes.
 
-**Extraccion de Datos**
+ **Distribución de evasión**
+ En este paso, el objetivo es comprender cómo está distribuida la variable "churn" (evasión) entre los clientes. Utiliza gráficos para visualizar la proporción de clientes que permanecieron y los que se dieron de baja.
 
-📌 Enlace de la API:
+ **Recuento de evasión por variables categóricas**
+ exploraremos cómo se distribuye la evasión según variables categóricas, como género, tipo de contrato, método de pago, entre otras.
+ Este análisis puede revelar patrones interesantes, por ejemplo, si los clientes de ciertos perfiles tienen una mayor tendencia a cancelar el servicio, lo que ayudará a orientar acciones estratégicas.
 
-¿Qué debes hacer?
-✅ Cargar los datos directamente desde la API utilizando Python.
-✅ Convertir los datos a un DataFrame de Pandas para facilitar su manipulación.
+ **Conteo de evasión por variables numéricas**
+ En este paso, explora cómo las variables numéricas, como "total gastado" o "tiempo de contrato", se distribuyen entre los clientes que cancelaron (evasión) y los que no cancelaron.
+ Este análisis ayuda a entender si ciertos valores numéricos están más asociados con la evasión, proporcionando insights sobre los factores que influyen en el comportamiento de los clientes.
+ 
+ **Informe final**
+Finaliza el desafío elaborando un informe dentro del mismo notebook que resuma todo el trabajo realizado. El informe debe incluir:
 
-**Transformacion de datos**
-es fundamental comprender la estructura del dataset y el significado de sus columnas. Esta etapa te ayudará a identificar qué variables son más relevantes para el análisis de evasión de clientes.
+🔹 Introducción: Explica el objetivo del análisis y el problema de evasión de clientes (Churn).
 
-📌 Para facilitar este proceso, hemos creado un diccionario de datos con la descripción de cada columna. Aunque no es obligatorio utilizarlo, puede ayudarte a comprender mejor la información disponible.
+🔹 Limpieza y Tratamiento de Datos: Describe los pasos realizados para importar, limpiar y procesar los datos.
 
-- ¿Qué debes hacer?
+🔹 Análisis Exploratorio de Datos: Presenta los análisis realizados, incluyendo gráficos y visualizaciones para identificar patrones.
 
-✅ Explorar las columnas del dataset y verificar sus tipos de datos.
-✅ Consultar el diccionario para comprender mejor el significado de las variables.
-✅ Identificar las columnas más relevantes para el análisis de evasión.
+🔹 Conclusiones e Insights: Resume los principales hallazgos y cómo estos datos pueden ayudar a reducir la evasión.
 
-**Comprobación de incoherencias en los datos**
-En este paso, verifica si hay problemas en los datos que puedan afectar el análisis. Presta atención a valores ausentes, duplicados, errores de formato e inconsistencias en las categorías. Este proceso es esencial para asegurarte de que los datos estén listos para las siguientes etapas.
+🔹 Recomendaciones: Ofrece sugerencias estratégicas basadas en tu análisis.
 
-**Manejo de inconsistencias**
-Ahora que has identificado las inconsistencias, es momento de aplicar las correcciones necesarias. Ajusta los datos para asegurarte de que estén completos y coherentes, preparándolos para las siguientes etapas del análisis.
-
-**Columna de cuentas diarias (Opcional)**
-Ahora que los datos están limpios, es momento de crear la columna "Cuentas_Diarias". Utiliza la facturación mensual para calcular el valor diario, proporcionando una visión más detallada del comportamiento de los clientes a lo largo del tiempo.
-
-**Estandarización y transformación de datos (opcional)**
-La estandarización y transformación de datos es una etapa opcional, pero altamente recomendada, ya que busca hacer que la información sea más consistente, comprensible y adecuada para el análisis. Durante esta fase, por ejemplo, puedes convertir valores textuales como "Sí" y "No" en valores binarios (1 y 0), lo que facilita el procesamiento matemático y la aplicación de modelos analíticos.
-
-Además, traducir o renombrar columnas y datos hace que la información sea más accesible y fácil de entender, especialmente cuando se trabaja con fuentes externas o términos técnicos. Aunque no es un paso obligatorio, puede mejorar significativamente la claridad y comunicación de los resultados, facilitando la interpretación y evitando confusiones, especialmente al compartir información con stakeholders no técnicos.
-
-
+Asegúrate de que el informe esté bien estructurado, claro y respaldado por visualizaciones que refuercen tus conclusiones. 
