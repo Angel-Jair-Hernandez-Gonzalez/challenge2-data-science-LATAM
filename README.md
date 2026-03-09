@@ -18,12 +18,15 @@ Telecom X enfrenta una **tasa de evasión del 26.58%**, lo que significa que apr
 
 ```
 challenge2-data-science-LATAM/
-├── README.md                          # Este archivo (documentación del proyecto)
+├── README.md                               # Este archivo (documentación del proyecto)
+├── requirements.txt                        # Dependencias Python
 ├── data/
-│   ├── TelecomX_Data.json            # Dataset completo con estructura JSON anidada
-│   └── TelecomX_diccionario.md       # Diccionario de datos y variable descriptions
+│   ├── TelecomX_Data.json                 # Dataset original con estructura JSON
+│   ├── TelecomX_diccionario.md            # Diccionario de datos
+│   └── processed/
+│       └── telecom_cleaned.csv            # Datos limpios exportados de Parte 1 (7,032 registros)
 └── notebooks/
-    └── TelecomX_LATAM.ipynb          # Notebook principal con análisis completo
+    └── TelecomX_LATAM.ipynb               # Notebook EDA completo
 ```
 
 ## Requisitos y Dependencias
@@ -189,20 +192,27 @@ Comparación de distribuciones entre clientes evadidos y activos:
 - **Matplotlib & Seaborn**: Visualización de datos
 - **Git**: Control de versiones
 
+## Proyecto de Dos Fases
+
+Este repositorio contiene la **Parte 2: Modelado Predictivo** de un proyecto completo de análisis de evasión de clientes.
+
+- **Parte 1:** Análisis Exploratorio de Datos (EDA)
+- **Parte 2 (Este Repositorio):** Modelado Predictivo de Evasión de Clientes
+
+Los datos limpios y procesados en Parte 1 se cargan desde `data/processed/telecom_cleaned.csv` para entrenar modelos de Machine Learning que predicen cancelaciones de clientes.
+
+👉 **[Parte 1: Análisis Exploratorio →](https://github.com/Angel-Jair-Hernandez-Gonzalez/challenge1-data-science-latam-)**
+
+---
+
 ## Autor
 
 **Angel Jair Hernández González**
 
 - GitHub: [Angel-Jair-Hernandez-Gonzalez](https://github.com/Angel-Jair-Hernandez-Gonzalez)
-- Repositorio: [challenge2-data-science-LATAM](https://github.com/Angel-Jair-Hernandez-Gonzalez/challenge2-data-science-LATAM)
+- Repositorio Parte 1 (EDA): [challenge1-data-science-latam-](https://github.com/Angel-Jair-Hernandez-Gonzalez/challenge1-data-science-latam-)
+- Repositorio Parte 2 (Modelado): [challenge2-data-science-LATAM](https://github.com/Angel-Jair-Hernandez-Gonzalez/challenge2-data-science-LATAM)
 
 ## Licencia
 
-Este proyecto es de código abierto y disponible bajo la licencia MIT.
-
-## Notas Importantes
-
-- El análisis completo se ejecuta en aproximadamente 2-3 segundos
-- Los gráficos se generan automáticamente durante la ejecución
-- El informe final contiene conclusiones detalladas y recomendaciones basadas en datos
-- Todos los datos están limpios y validados antes del análisis 
+Este proyecto es de código abierto y disponible bajo la licencia MIT. 
